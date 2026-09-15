@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mohamed Mdhaffar — ICT engineering student at SUP'COM building computer vision, AI systems, and GPU-accelerated software.">
+  <meta name="theme-color" content="#050814">
+  <title>Mohamed Mdhaffar — AI & Computer Vision Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Lexend:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav-shell">
+    <a class="brand" href="#top" aria-label="Mohamed Mdhaffar, home"><span>Mohamed Mdhaffar</span></a>
+    <nav id="primary-navigation" aria-label="Primary navigation">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#courses">Courses</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="primary-navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="nav-cta" href="mailto:mohamed.mdhaffar@supcom.tn">Let's talk <span>↗</span></a>
+  </header>
+
+  <main id="main-content">
+    <div class="hero section-pad">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot"></span> Seeking a 2027 end-of-studies internship abroad</p>
+        <h1>I build AI that<br><em>sees, reasons,</em><br>and runs fast.</h1>
+        <p class="hero-intro">ICT engineering student at SUP'COM, working where computer vision, autonomous agents, and high-performance systems meet.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Explore my work <span>↓</span></a>
+          <a class="text-link" href="CV_mohamedMdhaffar.pdf" target="_blank" rel="noreferrer">View résumé <span>↗</span></a>
+        </div>
+      </div>
+      <div class="hero-visual reveal" aria-label="Abstract visualization of an AI system">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="portrait-frame">
+          <img src="me.png" alt="Portrait of Mohamed Mdhaffar" width="1293" height="1216">
+        </div>
+        <div class="system-card terminal-card">
+          <div class="terminal-top"><span></span><span></span><span></span><b>vision_pipeline.py</b></div>
+          <pre><code><i>01</i>  stream = RTSP(<strong>source</strong>)
+<i>02</i>  frames = model.<strong>track</strong>(stream)
+<i>03</i>  insights = agent.<strong>reason</strong>(frames)
+<i>04</i>  deploy(<strong>edge=True</strong>)</code></pre>
+          <div class="terminal-status"><span>● LIVE</span><b>32.8 FPS</b></div>
+        </div>
+        <div class="metric-card"><span>CUDA acceleration</span><strong>9.5×</strong><small>peak speedup on A100</small></div>
+        <div class="location-chip">Tunis, Tunisia <span>↗ worldwide</span></div>
+      </div>
+    </div>
+
+
+    <section class="work section-pad" id="projects">
+      <div class="section-heading reveal"><p class="eyebrow">Selected work / 2025–26</p><h2>Systems with a point<br>of view—and a purpose.</h2></div>
+      <div class="project-grid">
+        <article class="project dip-case-study reveal" aria-labelledby="dip-title">
+          <header class="dip-hero">
+            <div class="dip-hero-copy">
+              <div class="project-number">01 / COMPUTATIONAL IMAGING · GPU SYSTEMS</div>
+              <h3 id="dip-title">GPU-Accelerated Deep Image Prior for Image Denoising</h3>
+              <p>Single-image reconstruction with Deep Image Prior, ADMM, TV/WTV regularization, and native PyTorch C++/CUDA operators—built to study both reconstruction behavior and GPU execution.</p>
+              <div class="dip-highlight-row" aria-label="Project highlights">
+                <div><strong>33.049 dB</strong><span>Best ADMM-DIP checkpoint</span></div>
+                <div><strong>9.52×</strong><span>Periodic-gradient speedup</span></div>
+                <div><strong>A100 80 GB</strong><span>Profiling platform</span></div>
+              </div>
+              <a class="project-repo" href="https://github.com/Khalifa-Bouneb/Compressed-Sensing-with-Deep-Image-Prior-for-Chest-CT-Signal-Denoising" target="_blank" rel="noreferrer"><span><small>Research repository</small>Explore the implementation</span><b aria-hidden="true">↗</b></a>
+            </div>
+            <figure class="dip-concept-figure">
+              <img src="assets/image-1.png" alt="Deep Image Prior optimization diagram showing a fixed noise input progressively reconstructed toward a target image" width="664" height="282">
+              <figcaption>A randomly initialized network learns the structure of one image directly—without a pre-trained denoising dataset.</figcaption>
+            </figure>
+          </header>
+
+          <div class="dip-section dip-two-column">
+            <section aria-labelledby="dip-problem-title">
+              <p class="dip-kicker">01 · Problem &amp; motivation</p>
+              <h4 id="dip-problem-title">Can the network architecture itself act as an image prior?</h4>
+              <p>Deep Image Prior (DIP) fits an untrained convolutional network to a single noisy observation. Natural image structure is typically reconstructed before the network begins fitting noise, making optimization control and early stopping essential.</p>
+            </section>
+            <section aria-labelledby="dip-approach-title">
+              <p class="dip-kicker">02 · Technical approach</p>
+              <h4 id="dip-approach-title">DIP meets constrained optimization</h4>
+              <p>I implemented vanilla DIP, then coupled it with ADMM—an optimization method that separates the neural reconstruction step from explicit TV/WTV regularization. Native CUDA operators cover periodic gradient, divergence, shrinkage, and dual updates, with autograd integration and a portable PyTorch fallback. I compared eager PyTorch, compiled PyTorch, and native CUDA paths, evaluated BM3D and other classical baselines, and added early stopping with best-checkpoint restoration to limit noise overfitting.</p>
+            </section>
+          </div>
+
+          <section class="dip-section" aria-labelledby="dip-results-title">
+            <div class="dip-section-heading">
+              <div><p class="dip-kicker">03 · Representative results</p><h4 id="dip-results-title">One RGB example from BSDS300</h4></div>
+              <p>Each figure reads left to right: reconstructed output, noisy observation, and ground truth. These are representative single-image results—not dataset-wide averages or state-of-the-art claims.</p>
+            </div>
+            <div class="dip-results-grid">
+              <figure><img src="assets/bm3d-labeled.png" alt="BM3D result on one BSDS300 image: reconstruction on the left, noisy observation in the center, and ground truth on the right" loading="lazy" width="2172" height="724"><figcaption><strong>BM3D baseline</strong><span>31.721 dB PSNR · 0.8032 SSIM</span></figcaption></figure>
+              <figure><img src="assets/dip-labeled.png" alt="Vanilla Deep Image Prior result at iteration 723: reconstruction on the left, noisy observation in the center, and ground truth on the right" loading="lazy" width="2170" height="725"><figcaption><strong>Vanilla DIP · iteration 723</strong><span>29.860 dB PSNR · checkpoint restored from iteration 703</span></figcaption></figure>
+              <figure class="dip-result-best"><img src="assets/admm-labeled.png" alt="ADMM-DIP result at iteration 1965: reconstruction on the left, noisy observation in the center, and ground truth on the right; best checkpoint reached 33.049 dB" loading="lazy" width="2170" height="725"><figcaption><strong>ADMM-DIP · best checkpoint</strong><span>33.049 dB at iteration 1865 · displayed iteration 1965: 31.642 dB</span></figcaption></figure>
+              <figure><img src="assets/admm-cuda-labeled.png" alt="CUDA-accelerated ADMM-DIP result at iteration 1999: reconstruction on the left, noisy observation in the center, and ground truth on the right" loading="lazy" width="2170" height="725"><figcaption><strong>CUDA ADMM-DIP · iteration 1999</strong><span>32.610 dB PSNR · CUDA accelerates computation, not reconstruction quality</span></figcaption></figure>
+            </div>
+            <div class="dip-table-wrap" tabindex="0" role="region" aria-label="Representative single-image denoising metrics">
+              <table class="dip-results-table">
+                <caption>Representative metrics for one BSDS300 image</caption>
+                <thead><tr><th scope="col">Method</th><th scope="col">Iteration</th><th scope="col">PSNR<sub>gt</sub></th><th scope="col">PSNR<sub>noisy</sub></th><th scope="col">SSIM<sub>gt</sub></th><th scope="col">SSIM<sub>noisy</sub></th><th scope="col">DSSIM</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">BM3D</th><td>—</td><td>31.721 dB</td><td>27.485</td><td>0.8032</td><td>0.5448</td><td>0.2778</td></tr>
+                  <tr><th scope="row">DIP</th><td>723</td><td>29.860 dB</td><td>26.620</td><td>0.7607</td><td>—</td><td>0.2178</td></tr>
+                  <tr class="dip-best-row"><th scope="row">ADMM-DIP</th><td>1965</td><td>31.642 dB <small>best: 33.049</small></td><td>27.513</td><td>—</td><td>—</td><td>—</td></tr>
+                  <tr><th scope="row">CUDA ADMM-DIP</th><td>1999</td><td>32.610 dB</td><td>27.913</td><td>—</td><td>—</td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="dip-section dip-benchmark" aria-labelledby="dip-cuda-title">
+            <div class="dip-benchmark-copy">
+              <p class="dip-kicker">04 · CUDA acceleration</p>
+              <h4 id="dip-cuda-title">A 9.52× faster periodic-gradient operator</h4>
+              <p>The benchmark compares the custom CUDA operator with the FFT implementation on a real DIP output of shape <code>1 × 3 × 320 × 480</code>, using <code>float32</code> on an NVIDIA A100. The result measures 100 operator calls.</p>
+              <div class="dip-speed-comparison">
+                <div><span>FFT gradient</span><strong>391.895 µs</strong><small>39.189503 ms total</small></div>
+                <div class="dip-speed-winner"><span>Custom CUDA</span><strong>41.165 µs</strong><small>4.116480 ms total</small></div>
+              </div>
+              <p class="dip-profile-stat"><strong>70.728 → 8.105 ms</strong><span>Profiled self-CUDA time</span></p>
+            </div>
+            <figure class="dip-gpu-card">
+              <img src="assets/nvidia-a100-80-gb-og-social-1200x630.jpg" alt="Product image representing an NVIDIA A100 Tensor Core GPU" loading="lazy" width="1200" height="630">
+              <figcaption><strong>NVIDIA A100 80 GB</strong><span>Ampere architecture · 80 GB HBM2e · TF32, FP16 &amp; BF16 Tensor Cores · high-bandwidth memory for optimization and profiling</span><small>Platform illustration; not asserted to be the exact physical machine used.</small></figcaption>
+            </figure>
+          </section>
+
+          <section class="dip-section" aria-labelledby="dip-consistency-title">
+            <div class="dip-section-heading compact"><div><p class="dip-kicker">05 · Numerical consistency</p><h4 id="dip-consistency-title">Speed without changing the operator</h4></div><p>The custom kernel stays closely aligned with the reference FFT computation. CUDA’s demonstrated contribution here is computational acceleration, not improved denoising quality.</p></div>
+            <div class="dip-error-grid">
+              <div><span>Horizontal max error</span><strong>3.2619573e−07</strong></div><div><span>Horizontal mean error</span><strong>6.2645512e−08</strong></div><div><span>Vertical max error</span><strong>2.5774352e−07</strong></div><div><span>Vertical mean error</span><strong>4.7060624e−08</strong></div>
+            </div>
+          </section>
+
+          <section class="dip-section" aria-labelledby="dip-profile-title">
+            <div class="dip-section-heading"><div><p class="dip-kicker">06 · Profiling &amp; performance analysis</p><h4 id="dip-profile-title">From convergence curves to kernel-level traces</h4></div><p>PyTorch Profiler and Perfetto made bottlenecks observable across Python, autograd, and CUDA rather than relying on wall-clock timing alone.</p></div>
+            <div class="dip-profile-grid">
+              <figure><img src="assets/image-2.png" alt="Loss and ground-truth PSNR curves comparing TV and WTV with eager PyTorch and custom CUDA implementations" loading="lazy" width="1518" height="534"><figcaption><strong>Optimization behavior</strong><span>Loss and ground-truth PSNR curves for TV/WTV eager and custom CUDA paths.</span></figcaption></figure>
+              <figure><img src="assets/image-3.png" alt="Perfetto execution timeline showing DIP forward passes, backward computation, optimizer steps, ADMM iterations, and CPU and CUDA activity" loading="lazy" width="1917" height="964"><figcaption><strong>Perfetto execution trace</strong><span>The trace exposes DIP forward passes, backpropagation, optimizer steps, ADMM iterations, and CPU/CUDA activity.</span></figcaption></figure>
+            </div>
+          </section>
+
+          <footer class="dip-case-footer">
+            <section aria-labelledby="dip-tech-title"><p class="dip-kicker">07 · Technologies</p><h4 id="dip-tech-title">Built across optimization and systems layers</h4><ul class="tags"><li>Python</li><li>PyTorch</li><li>C++</li><li>CUDA</li><li>ADMM</li><li>Deep Image Prior</li><li>TV / WTV</li><li>BM3D</li><li>PyTorch Profiler</li><li>Perfetto</li><li>Jupyter</li></ul></section>
+            <section aria-labelledby="dip-future-title"><p class="dip-kicker">08 · Limitations &amp; future work</p><h4 id="dip-future-title">What comes next</h4><p>The reported metrics come from one RGB BSDS300 example and do not establish dataset-wide performance. Chest-CT reconstruction, a CT dataset, and a CT measurement operator remain future work despite the repository title. Next steps include broader evaluation, task-specific measurement models, and systematic quality/runtime studies.</p></section>
+          </footer>
+        </article>
+
+        <article class="project tsyp-case-study reveal" aria-labelledby="tsyp-title">
+          <header class="tsyp-hero">
+            <div class="tsyp-hero-copy">
+              <div class="project-number">02 / SPACE SYSTEMS · EDGE AI</div>
+              <span class="tsyp-award-badge">2nd place · TSYP13</span>
+              <h3 id="tsyp-title">AI-Driven Predictive Maintenance for OPS-SAT ADCS</h3>
+              <p>An autonomous monitoring prototype for a 3U CubeSat Attitude Determination and Control System. It detects abnormal telemetry and estimates corrected sensor values directly on embedded hardware, reducing dependence on ground intervention.</p>
+              <div class="tsyp-metrics" aria-label="Key project results">
+                <div><strong>95.65%</strong><span>ANN test accuracy</span></div>
+                <div><strong>89.10%</strong><span>F1 score</span></div>
+                <div><strong>97.63%</strong><span>Test AUC</span></div>
+                <div><strong>≈2 ms</strong><span>Embedded ANN latency</span></div>
+              </div>
+              <a class="project-repo" href="https://github.com/MedMdhaffar/TSYP13/" target="_blank" rel="noreferrer"><span><small>Project repository</small>Explore the models, firmware, and schematics</span><b aria-hidden="true">↗</b></a>
+            </div>
+            <figure class="tsyp-spacecraft">
+              <img src="TSYP13/zef.png" alt="OPS-SAT spacecraft illustration beside a labeled view of its internal bus system stack" loading="lazy" width="835" height="359">
+              <figcaption>OPS-SAT mission context and compact 3U bus architecture.</figcaption>
+            </figure>
+          </header>
+
+          <div class="tsyp-section tsyp-overview-grid">
+            <section aria-labelledby="tsyp-challenge-title"><p class="tsyp-kicker">01 · Mission challenge</p><h4 id="tsyp-challenge-title">Keeping attitude-control telemetry dependable in orbit</h4><p>CubeSat ADCS hardware operates under strict power, volume, thermal, and radiation constraints. A sensor anomaly can threaten pointing accuracy and mission continuity, while waiting for ground analysis adds delay. This project investigates onboard intelligence for faster fault detection and autonomous signal recovery.</p></section>
+            <section aria-labelledby="tsyp-strategy-title"><p class="tsyp-kicker">02 · Dual-model strategy</p><h4 id="tsyp-strategy-title">Detect first, then reconstruct the signal</h4><p>An Artificial Neural Network classifies incoming telemetry as normal or anomalous. When a fault is detected, one of nine channel-specific Random Forest regressors estimates a corrected value for the affected magnetometer or sun-sensor channel.</p></section>
+          </div>
+
+          <section class="tsyp-section tsyp-architecture" aria-labelledby="tsyp-architecture-title">
+            <div class="tsyp-section-heading"><div><p class="tsyp-kicker">03 · End-to-end architecture</p><h4 id="tsyp-architecture-title">Telemetry → detection → correction → validated output</h4></div><p>The STM32F429 sits inside the monitoring loop, consuming ADCS signals, running anomaly inference, and forwarding corrected data back toward the simulated bus interface.</p></div>
+            <figure><img src="TSYP13/image.png" alt="Architecture diagram showing STM32F429 telemetry acquisition, neural-network anomaly detection, Random Forest correction, and communication with OPS-SAT ADCS components" loading="lazy" width="832" height="872"><figcaption>The prototype connects the STM32F429, NanoCom AX100 simulation, magnetometer channels, six coarse sun sensors, and the spacecraft attitude-control bus.</figcaption></figure>
+            <div class="tsyp-channel-grid">
+              <div><strong>3</strong><span>Magnetometer channels</span><small>X, Y, and Z</small></div>
+              <div><strong>6</strong><span>Sun-sensor channels</span><small>Photodiodes PD1–PD6</small></div>
+              <div><strong>9</strong><span>Correction models</span><small>One Random Forest per channel</small></div>
+            </div>
+          </section>
+
+          <section class="tsyp-section" aria-labelledby="tsyp-ml-title">
+            <div class="tsyp-section-heading"><div><p class="tsyp-kicker">04 · Machine learning</p><h4 id="tsyp-ml-title">Compact models for constrained inference</h4></div><p>The pipeline separates fault classification from numerical signal correction, allowing each model to remain focused and small enough for a Cortex-M4F deployment target.</p></div>
+            <div class="tsyp-model-grid">
+              <article><span>MODEL 01 · DETECTION</span><h5>Artificial Neural Network</h5><p>Analyzes real-time magnetometer and sun-sensor telemetry to identify deviations from normal behavior.</p><ul><li>95.65% accuracy</li><li>89.10% F1</li><li>97.63% AUC</li></ul></article>
+              <article><span>MODELS 02–10 · CORRECTION</span><h5>Nine Random Forest regressors</h5><p>Each regressor specializes in one monitored channel and predicts a corrected signal when the detector flags an anomaly.</p><ul><li>Per-channel models</li><li>Autonomous recovery</li><li>No immediate ground intervention</li></ul></article>
+            </div>
+          </section>
+
+          <section class="tsyp-section tsyp-embedded" aria-labelledby="tsyp-embedded-title">
+            <div><p class="tsyp-kicker">05 · Embedded deployment</p><h4 id="tsyp-embedded-title">Inference on STM32F429</h4><p>The final firmware targets the STM32F429ZIT6 Discovery Kit with an Arm Cortex-M4F. STM32Cube.AI converts the ANN into optimized C for embedded inference, while Edge Impulse supports rapid experimentation and comparison.</p><div class="tsyp-resource-grid"><div><strong>≈2 ms</strong><span>ANN inference latency</span></div><div><strong>≈0.2 KB</strong><span>RAM usage</span></div><div><strong>≈34.7 KB</strong><span>Flash usage</span></div></div></div>
+            <div class="tsyp-prototype-column">
+              <figure class="tsyp-prototype-figure"><img src="TSYP13/prototype.jpg" alt="Physical CubeSat-style prototype frame containing an STM32F4 Discovery board and connected sensor wiring" loading="lazy" width="1440" height="1920"><figcaption><strong>Physical embedded prototype</strong><span>STM32F4 Discovery hardware integrated inside the CubeSat-style test frame.</span></figcaption></figure>
+              <div class="tsyp-hardware-list" aria-label="Prototype hardware interfaces"><div><span>MCU</span><strong>STM32F429ZIT6</strong><small>Onboard processing and inference</small></div><div><span>Attitude sensing</span><strong>MPU-9250 IMU</strong><small>9-axis inertial measurement</small></div><div><span>Communications</span><strong>NanoCom AX100</strong><small>Subsystem interface simulation</small></div></div>
+            </div>
+          </section>
+
+          <section class="tsyp-section" aria-labelledby="tsyp-gallery-title">
+            <div class="tsyp-section-heading"><div><p class="tsyp-kicker">06 · TSYP13 outcome</p><h4 id="tsyp-gallery-title">Second place through systems-level teamwork</h4></div><p>The project combined machine learning, embedded deployment, telemetry processing, and hardware integration into one demonstrable prototype for the TSYP13 challenge.</p></div>
+            <div class="tsyp-gallery">
+              <figure class="tsyp-gallery-feature"><img src="TSYP13/1766923400409.jpg" alt="Project team holding the TSYP13 second-place award" loading="lazy" width="2048" height="1536"><figcaption>Team celebration with the second-place award.</figcaption></figure>
+              <figure><img src="TSYP13/1766923399720.jpg" alt="TSYP13 award ceremony with the project team and organizers on stage" loading="lazy" width="2048" height="1152"><figcaption>Recognition on the TSYP13 awards stage.</figcaption></figure>
+              <figure><img src="TSYP13/1768141590614.jpg" alt="TSYP13 event venue during the closing ceremony" loading="lazy" width="2048" height="1536"><figcaption>TSYP13 closing event.</figcaption></figure>
+              <figure><img src="TSYP13/1768141599135.jpg" alt="Group photograph of TSYP13 participants" loading="lazy" width="2048" height="1536"><figcaption>TSYP13 participants and community.</figcaption></figure>
+            </div>
+          </section>
+
+          <footer class="tsyp-case-footer">
+            <section aria-labelledby="tsyp-tools-title"><p class="tsyp-kicker">07 · Technologies</p><h4 id="tsyp-tools-title">ML, embedded, and electronics</h4><ul class="tags"><li>TensorFlow</li><li>Keras</li><li>scikit-learn</li><li>STM32F429</li><li>Arm Cortex-M4F</li><li>STM32Cube.AI</li><li>STM32CubeIDE</li><li>Edge Impulse</li><li>Embedded C</li><li>ADCS telemetry</li></ul></section>
+            <section aria-labelledby="tsyp-scope-title"><p class="tsyp-kicker">08 · Engineering scope</p><h4 id="tsyp-scope-title">A mission-oriented prototype</h4><p>The work demonstrates the detection, correction, and embedded deployment pipeline for OPS-SAT-inspired ADCS monitoring. It is presented as a prototype and competition project—not as software already flown aboard the ESA spacecraft.</p></section>
+          </footer>
+        </article>
+
+        <article class="project bio-case-study reveal" aria-labelledby="bio-title">
+          <header class="bio-hero">
+            <div class="bio-hero-copy">
+              <div class="project-number">03 / BIOMEDICAL DISCOVERY · VECTOR SEARCH</div>
+              <span class="bio-award-badge">7th place · Vectors in Orbit Hackathon</span>
+              <h3 id="bio-title">Bio-Vector Orbit <em>Discovery Engine v2.0</em></h3>
+              <p>A vector-powered discovery engine that turns fragmented biomedical sources—research papers, protein structures, and chemical molecules—into one searchable intelligence layer.</p>
+              <div class="bio-mode-summary" aria-label="Three biological discovery modes"><div><strong>Literature</strong><span>Semantic PubMed retrieval</span></div><div><strong>Proteins</strong><span>PDB structure discovery</span></div><div><strong>Molecules</strong><span>SMILES latent similarity</span></div></div>
+              <a class="project-repo" href="https://github.com/KarrayAziz/Vectros-in-orbit2.0" target="_blank" rel="noreferrer"><span><small>Project repository</small>Explore Bio-Vector Orbit v2.0</span><b aria-hidden="true">↗</b></a>
+            </div>
+            <figure class="bio-product-figure"><img src="BioVector/image.png" alt="Bio-Vector Orbit dashboard showing semantic protein search results for tyrosine with cards linking to interactive 3D views" loading="lazy" width="1918" height="902"><figcaption>Protein discovery mode combines semantic matches, structural metadata, and direct access to interactive 3D visualization.</figcaption></figure>
+          </header>
+
+          <div class="bio-section bio-overview-grid">
+            <section aria-labelledby="bio-problem-title"><p class="bio-kicker">01 · Problem</p><h4 id="bio-problem-title">Biological knowledge lives in disconnected formats</h4><p>Researchers move between article abstracts, sequence and protein repositories, and chemical representations. Different identifiers, data shapes, and search interfaces make it difficult to explore related evidence through one consistent workflow.</p></section>
+            <section aria-labelledby="bio-solution-title"><p class="bio-kicker">02 · Solution</p><h4 id="bio-solution-title">A shared semantic layer across biological entities</h4><p>Bio-Vector Orbit standardizes retrieval behind one interface. Users choose a discovery mode, submit text or a SMILES representation, and receive specialized results for literature, protein structures, or chemically similar molecules.</p></section>
+          </div>
+
+          <section class="bio-section" aria-labelledby="bio-modes-title">
+            <div class="bio-section-heading"><div><p class="bio-kicker">03 · Discovery modes</p><h4 id="bio-modes-title">Three search experiences, one interface</h4></div><p>The backend normalizes each result type while the React interface adapts its cards and actions to the biological object being explored.</p></div>
+            <div class="bio-mode-grid">
+              <article><span>01</span><h5>Biomedical literature</h5><p>Retrieves PubMed records through NCBI and embeds biomedical text with BGE-Small for meaning-based discovery beyond exact keywords.</p><small>NCBI · PubMed · Biopython · FastEmbed</small></article>
+              <article><span>02</span><h5>Protein structures</h5><p>Searches RCSB PDB structures and opens selected proteins inside a PDBe Mol* viewport with structural metadata and an immersive HUD.</p><small>RCSB PDB · PDBe Mol* · 3D visualization</small></article>
+              <article><span>03</span><h5>Chemical molecules</h5><p>Encodes SMILES strings through a custom Keras variational autoencoder and searches the resulting latent vectors for molecular similarity.</p><small>SMILES · Keras VAE · PubChem</small></article>
+            </div>
+          </section>
+
+          <section class="bio-section bio-architecture" aria-labelledby="bio-architecture-title">
+            <div class="bio-section-heading"><div><p class="bio-kicker">04 · System architecture</p><h4 id="bio-architecture-title">From query to specialized scientific result</h4></div><p>A FastAPI service coordinates external biological sources, embedding models, and Qdrant collections, while Docker Compose starts and connects the application stack.</p></div>
+            <div class="bio-flow" role="img" aria-label="Architecture flow from React frontend to FastAPI backend, Qdrant vector database, NCBI PubMed, RCSB PDB, and the molecular VAE">
+              <div><span>Interface</span><strong>React 19</strong><small>Vite · TypeScript · Tailwind CSS</small></div><i aria-hidden="true">→</i><div><span>Search router</span><strong>FastAPI</strong><small>Python 3.11 · Uvicorn</small></div><i aria-hidden="true">→</i><div><span>Vector layer</span><strong>Qdrant</strong><small>HNSW · multiple collections</small></div>
+            </div>
+            <div class="bio-source-grid"><div><span>Literature source</span><strong>NCBI PubMed</strong><small>Real-time article retrieval</small></div><div><span>Structure source</span><strong>RCSB PDB</strong><small>Protein records and coordinates</small></div><div><span>Chemical source</span><strong>PubChem + VAE</strong><small>SMILES-based latent discovery</small></div></div>
+          </section>
+
+          <section class="bio-section bio-vector-section" aria-labelledby="bio-vector-title">
+            <div><p class="bio-kicker">05 · Vector intelligence</p><h4 id="bio-vector-title">Purpose-built representations for each modality</h4><p>BGE-Small embeddings support semantic literature and protein queries. Chemical search follows a separate learned representation: the custom VAE maps SMILES inputs into a latent space where nearby vectors indicate similarity. Qdrant keeps these vector types in dedicated collections and applies HNSW indexing for efficient nearest-neighbor retrieval.</p></div>
+            <div class="bio-vector-cards"><div><strong>BGE-Small</strong><span>Text and protein discovery</span><small>FastEmbed inference</small></div><div><strong>Custom VAE</strong><span>Molecular latent space</span><small>Keras model</small></div><div><strong>HNSW</strong><span>Nearest-neighbor indexing</span><small>Qdrant search</small></div></div>
+          </section>
+
+          <section class="bio-section" aria-labelledby="bio-workflow-title">
+            <div class="bio-section-heading"><div><p class="bio-kicker">06 · User workflow</p><h4 id="bio-workflow-title">A focused path from question to exploration</h4></div><p>The same interaction model supports very different scientific data while preserving modality-specific context.</p></div>
+            <ol class="bio-workflow"><li><span>01</span><div><strong>Choose a mode</strong><p>Switch between Literature, Proteins, and Molecules.</p></div></li><li><span>02</span><div><strong>Run neural retrieval</strong><p>Embed a query or encode a SMILES string, then search the appropriate vector collection.</p></div></li><li><span>03</span><div><strong>Render the right object</strong><p>Receive adaptive PubMed, PDB, or molecule result cards.</p></div></li><li><span>04</span><div><strong>Explore in context</strong><p>Inspect metadata or open a protein in the interactive 3D viewer.</p></div></li></ol>
+          </section>
+
+          <section class="bio-section bio-use-cases" aria-labelledby="bio-use-title"><div><p class="bio-kicker">07 · Applications</p><h4 id="bio-use-title">Designed for scientific discovery workflows</h4></div><ul><li><strong>Drug discovery</strong><span>Explore literature, target proteins, and related compounds.</span></li><li><strong>Literature review</strong><span>Search biomedical abstracts by meaning rather than exact wording.</span></li><li><strong>Hypothesis generation</strong><span>Surface relationships across biological concepts and structures.</span></li><li><strong>Education</strong><span>Move from a biological query to visual protein exploration.</span></li></ul></section>
+
+          <footer class="bio-case-footer">
+            <section aria-labelledby="bio-tech-title"><p class="bio-kicker">08 · Technologies</p><h4 id="bio-tech-title">A containerized multimodal stack</h4><ul class="tags"><li>React 19</li><li>TypeScript</li><li>Tailwind CSS</li><li>FastAPI</li><li>Python 3.11</li><li>Qdrant</li><li>FastEmbed</li><li>BGE-Small</li><li>Keras VAE</li><li>PDBe Mol*</li><li>Docker Compose</li><li>NCBI</li><li>RCSB PDB</li><li>PubChem</li></ul></section>
+            <section aria-labelledby="bio-scope-title"><p class="bio-kicker">09 · Project scope</p><h4 id="bio-scope-title">Hackathon-ready discovery engine</h4><p>The project demonstrates a unified interface and retrieval architecture across three biological modalities. Its value is exploratory search and visualization; it is not presented as a clinical, diagnostic, or validated drug-development system.</p></section>
+          </footer>
+        </article>
+
+        <article class="project dr-case-study reveal" aria-labelledby="dr-title">
+          <header class="dr-hero">
+            <div class="dr-hero-copy">
+              <div class="project-number">04 / FINAL PROJECT · MEDICAL AI</div>
+              <span class="dr-status-badge">Two-phase pipeline complete</span>
+              <h3 id="dr-title">Robust Multi-Class Diabetic Retinopathy Detection</h3>
+              <p>A hybrid deep-learning pipeline that grades diabetic retinopathy from retinal fundus images, adds model-trust safeguards, and packages predictions with privacy-oriented encryption and watermarking controls.</p>
+              <div class="dr-hero-metrics" aria-label="Best validation checkpoint results"><div><strong>93.0%</strong><span>Validation accuracy</span></div><div><strong>0.9566</strong><span>Quadratic Weighted Kappa</span></div><div><strong>5 classes</strong><span>DR severity grading</span></div></div>
+              <a class="project-repo" href="https://github.com/MedMdhaffar/A-Robust-Deep-Learning-System-for-Multi-Class-Diabetic-Retinopathy-Detection" target="_blank" rel="noreferrer"><span><small>Project repository</small>Explore the complete implementation</span><b aria-hidden="true">↗</b></a>
+            </div>
+            <figure class="dr-condition-figure"><img src="diabetic_retinopathy/image.png" alt="Medical illustration comparing a normal retina with diabetic retinopathy signs including haemorrhages, abnormal blood vessels, aneurysms, cotton-wool spots, and hard exudates" loading="lazy" width="830" height="407"><figcaption>Diabetic retinopathy can produce visible retinal lesions that a computer-vision system can learn to distinguish by severity.</figcaption></figure>
+          </header>
+
+          <div class="dr-section dr-overview-grid">
+            <section aria-labelledby="dr-problem-title"><p class="dr-kicker">01 · Clinical problem</p><h4 id="dr-problem-title">Grading a progressive retinal disease</h4><p>Diabetic retinopathy screening requires distinguishing subtle lesions across five ordered severity levels: No DR, Mild, Moderate, Severe, and Proliferative DR. The problem combines fine local texture recognition with global retinal context and substantial class imbalance.</p></section>
+            <section aria-labelledby="dr-design-title"><p class="dr-kicker">02 · Design goal</p><h4 id="dr-design-title">Accuracy, ordinal agreement, and responsible outputs</h4><p>The project combines a hybrid CNN–Transformer classifier with explainability, uncertainty estimation, and out-of-distribution checks. A second security phase protects patient metadata and predictions inside a DICOM-oriented workflow.</p></section>
+          </div>
+
+          <section class="dr-section" aria-labelledby="dr-architecture-title">
+            <div class="dr-section-heading"><div><p class="dr-kicker">03 · End-to-end architecture</p><h4 id="dr-architecture-title">From fundus image to interpretable severity prediction</h4></div><p>The 512 × 512 retinal input passes through image preparation and augmentation before a ConvNeXt–Swin hybrid combines local lesion features with global spatial relationships.</p></div>
+            <figure class="dr-pipeline-figure"><img src="diabetic_retinopathy/1785352710336.jpg" alt="Diabetic retinopathy pipeline diagram showing retinal datasets, preprocessing and augmentation, hybrid CNN and Vision Transformer feature extraction, five-class output, and Grad-CAM explainability" loading="lazy" width="1921" height="1280"><figcaption>Project pipeline overview: data preparation, hybrid CNN–ViT inference, five-class grading, and visual explanation.</figcaption></figure>
+            <div class="dr-architecture-flow" role="img" aria-label="Model architecture from 512 by 512 image through ConvNeXt-Base and two Swin Transformer layers to global pooling and five-class classification"><div><span>Input</span><strong>3 × 512 × 512</strong><small>Retinal fundus image</small></div><i aria-hidden="true">→</i><div><span>Local features</span><strong>ConvNeXt-Base</strong><small>ImageNet-pretrained CNN</small></div><i aria-hidden="true">→</i><div><span>Global context</span><strong>2 Swin layers</strong><small>Window size 7</small></div><i aria-hidden="true">→</i><div><span>Output</span><strong>5 DR classes</strong><small>Global pooling + classifier</small></div></div>
+          </section>
+
+          <section class="dr-section" aria-labelledby="dr-training-title">
+            <div class="dr-section-heading"><div><p class="dr-kicker">04 · Training pipeline</p><h4 id="dr-training-title">Built for retinal variation and class imbalance</h4></div><p>The model has approximately 112.8 million trainable parameters. Training combines robust retinal preprocessing, strong augmentation, imbalance-aware loss, and ordinal evaluation.</p></div>
+            <div class="dr-training-grid"><article><span>PREPROCESSING</span><h5>Preserve useful retinal detail</h5><p>ROI crop, Ben Graham normalization, green-channel CLAHE, and resizing to 512 × 512.</p></article><article><span>AUGMENTATION</span><h5>Increase visual diversity</h5><p>Full-range rotation, horizontal and vertical flips, subtle zoom, MixUp α=0.4, and CutMix α=1.0.</p></article><article><span>OBJECTIVE</span><h5>Handle difficult minority classes</h5><p>Focal Loss γ=2 with label smoothing ε=0.1 and inverse-frequency class weights.</p></article><article><span>OPTIMIZATION</span><h5>Stable end-to-end training</h5><p>AdamW with a 1e−4 learning rate, 1e−5 weight decay, and cosine-annealing scheduling.</p></article></div>
+          </section>
+
+          <section class="dr-section dr-results-section" aria-labelledby="dr-results-title">
+            <div class="dr-section-heading"><div><p class="dr-kicker">05 · Validation results</p><h4 id="dr-results-title">Best checkpoint at epoch 26 of 50</h4></div><p>QWK is the primary metric because it rewards agreement that respects the ordered distance between DR severity classes. These values are validation results for the project’s 6,399-image dataset—not evidence of clinical efficacy.</p></div>
+            <div class="dr-result-cards"><div class="dr-result-primary"><span>Validation accuracy</span><strong>93.0%</strong></div><div class="dr-result-primary"><span>Quadratic Weighted Kappa</span><strong>0.9566</strong></div><div><span>Training loss</span><strong>0.3081</strong></div><div><span>Validation loss</span><strong>0.2617</strong></div><div><span>Learning rate</span><strong>4.69 × 10⁻⁵</strong></div><div><span>Time per epoch</span><strong>≈285 s</strong></div></div>
+            <div class="dr-table-wrap" tabindex="0" role="region" aria-label="Diabetic retinopathy dataset class distribution"><table class="dr-class-table"><caption>Class distribution · 6,399 fundus images</caption><thead><tr><th scope="col">Severity class</th><th scope="col">Images</th><th scope="col">Share</th></tr></thead><tbody><tr><th scope="row">No DR</th><td>2,805</td><td>43.8%</td></tr><tr><th scope="row">Mild</th><td>740</td><td>11.6%</td></tr><tr><th scope="row">Moderate</th><td>1,898</td><td>29.7%</td></tr><tr><th scope="row">Severe</th><td>366</td><td>5.7%</td></tr><tr><th scope="row">Proliferative DR</th><td>590</td><td>9.2%</td></tr></tbody></table></div>
+          </section>
+
+          <section class="dr-section dr-trust-section" aria-labelledby="dr-trust-title"><div><p class="dr-kicker">06 · Model trust</p><h4 id="dr-trust-title">Safeguards around the prediction</h4><p>A high validation score alone is not enough for responsible medical AI. The inference layer adds visual evidence, confidence analysis, and input-validity checks so uncertain or unfamiliar cases can be surfaced rather than silently treated as reliable.</p></div><div class="dr-trust-grid"><div><strong>Grad-CAM++</strong><span>Highlights retinal regions influencing the decision.</span></div><div><strong>Attention rollout</strong><span>Summarizes Transformer attention across the image.</span></div><div><strong>MC Dropout</strong><span>Estimates predictive uncertainty over repeated passes.</span></div><div><strong>OoD detection</strong><span>Flags inputs outside the expected retinal-image distribution.</span></div></div></section>
+
+          <section class="dr-section" aria-labelledby="dr-security-title">
+            <div class="dr-section-heading"><div><p class="dr-kicker">07 · Medical data security</p><h4 id="dr-security-title">Encrypted metadata and invisible watermarking</h4></div><p>Phase 2 is a privacy-oriented engineering prototype. It implements concrete security mechanisms but is not described as independently audited HIPAA compliance.</p></div>
+            <div class="dr-security-flow"><div><span>01</span><strong>ROI extraction</strong><small>Separate the retinal region from the black background.</small></div><i aria-hidden="true">→</i><div><span>02</span><strong>AES-256 encryption</strong><small>Encrypt patient identifiers and prediction payloads.</small></div><i aria-hidden="true">→</i><div><span>03</span><strong>DWT watermarking</strong><small>Embed encrypted data within the region of non-interest.</small></div><i aria-hidden="true">→</i><div><span>04</span><strong>DICOM packaging</strong><small>Export the image, metadata, and integrity information.</small></div></div>
+            <div class="dr-security-notes"><div><strong>SHA-256</strong><span>Integrity verification</span></div><div><strong>&gt;40 dB</strong><span>Reported watermarked-image PSNR</span></div><div><strong>Reverse extraction</strong><span>Recover embedded data and optional JSON reporting</span></div></div>
+          </section>
+
+          <footer class="dr-case-footer">
+            <section aria-labelledby="dr-tech-title"><p class="dr-kicker">08 · Technologies</p><h4 id="dr-tech-title">Vision, trust, and security stack</h4><ul class="tags"><li>PyTorch</li><li>ConvNeXt</li><li>Swin Transformer</li><li>OpenCV</li><li>timm</li><li>scikit-learn</li><li>Grad-CAM++</li><li>PyWavelets</li><li>AES-256</li><li>SHA-256</li><li>PyDICOM</li><li>Jupyter</li></ul></section>
+            <section aria-labelledby="dr-scope-title"><p class="dr-kicker">09 · Scope &amp; limitations</p><h4 id="dr-scope-title">A completed research implementation—not a clinical product</h4><p>The two software phases are implemented and validated on the project dataset, but the reported results do not establish real-world clinical safety, regulatory approval, or HIPAA compliance. External validation, calibration studies, bias analysis, security auditing, and prospective clinical evaluation would be required before deployment.</p><p class="dr-authors">Implementation and paper by Khalifa Bouneb &amp; Mohamed Mdhaffer.</p></section>
+          </footer>
+        </article>
+      </div>
+      <a class="all-work" href="https://github.com/MedMdhaffar" target="_blank" rel="noreferrer">See experiments and code on GitHub <span>↗</span></a>
+    </section>
+
+    <section class="experience section-pad" id="experience">
+      <div class="section-heading reveal"><p class="eyebrow">Experience</p><h2>From a research idea<br>to a running system.</h2></div>
+      <div class="timeline">
+        <article class="timeline-item timeline-featured waycon-featured reveal">
+          <div class="time">JUL—AUG 2026</div>
+          <div class="experience-body">
+            <div class="company-header company-header-light"><img src="WAYCON/logo waycon.jpg" alt="WAYCON logo" width="200" height="200"><div><strong>WAYCON</strong><small>Tunis, Tunisia</small></div></div>
+            <div class="waycon-gallery" aria-label="WAYCON forensic video analytics interfaces">
+              <figure class="waycon-gallery-wide"><img src="WAYCON/Capture d'écran 2026-09-14 225300.png" alt="Forensics results dashboard showing verified face-to-body associations across video frames" loading="lazy" width="1918" height="795"><figcaption>Forensics results · face ↔ body matching</figcaption></figure>
+              <figure><img src="WAYCON/Capture d'écran 2026-09-14 225313.png" alt="Enrolled-person profile showing appearance attributes, recognition history, and best face crops" loading="lazy" width="1163" height="770"><figcaption>Identity memory · appearance profile</figcaption></figure>
+              <figure><img src="WAYCON/Capture d'écran 2026-09-14 225403.png" alt="Forensic identity review interface with enrolled people, recognition history, and crop gallery" loading="lazy" width="1163" height="772"><figcaption>Identity review · recognition history</figcaption></figure>
+              <figure><img src="WAYCON/733414789_1511279509926735_3581745666981694621_n.png" alt="Face and body association interface from the WAYCON forensic video analytics system" loading="lazy"><figcaption>Face ↔ body association</figcaption></figure>
+              <figure><img src="WAYCON/742594782_1387532590006824_4797715867351582915_n.png" alt="Tunisian vehicle license plate detection results" loading="lazy"><figcaption>Vehicle and plate analytics</figcaption></figure>
+            </div>
+            <h3>Computer Vision & AI Agent Intern</h3>
+            <p>During this internship, I developed three complementary AI systems for real-time surveillance intelligence: a GPU-accelerated video forensics pipeline, a natural-language analytics agent, and a vehicle profiling system. The work connected live computer vision, multimodal reasoning, safe database access, and production-oriented deployment.</p>
+            <div class="waycon-systems">
+              <article>
+                <span>01 · VIDEO FORENSICS</span><h4>Real-time video analytics pipeline</h4>
+                <p>Built a LangGraph-orchestrated pipeline for RTSP camera streams using GStreamer, YOLO, FaceNet, and InternVL. It performs person detection, tracking, face-to-body association, identification, and visual analysis, with PyTorch and CUDA deployment on NVIDIA A100 GPUs.</p>
+                <ul class="experience-tags"><li>LangGraph</li><li>GStreamer</li><li>YOLO</li><li>FaceNet</li><li>InternVL</li><li>CUDA</li><li>A100</li></ul>
+                <a class="experience-repo" href="https://github.com/MedMdhaffar/ForensicsSystem" target="_blank" rel="noreferrer"><span><small>GitHub repository</small>Explore ForensicsSystem</span><b>↗</b></a>
+              </article>
+              <article>
+                <span>02 · DATA INTELLIGENCE</span><h4>Natural-language surveillance agent</h4>
+                <p>Developed an AI agent that converts natural-language questions into validated analytics over a PostgreSQL surveillance database. It combines reactive pull queries with proactive anomaly discovery, multi-turn memory, confidence scoring, SQL safety controls, and human review.</p>
+                <ul class="experience-tags"><li>LangGraph</li><li>MCP</li><li>FastAPI</li><li>PostgreSQL</li><li>SQL safety</li></ul>
+                <a class="experience-repo" href="https://github.com/MedMdhaffar/AISearchAgent" target="_blank" rel="noreferrer"><span><small>GitHub repository</small>Explore AISearchAgent</span><b>↗</b></a>
+              </article>
+              <article>
+                <span>03 · VEHICLE INTELLIGENCE</span><h4>Real-time vehicle analytics</h4>
+                <p>Created a multi-object tracking system that identifies vehicle type, colour, manufacturer, and Tunisian license plates. YOLO, ByteTrack, HSV analysis, PaddleOCR, and temporal aggregation produce stable vehicle profiles from surveillance video.</p>
+                <ul class="experience-tags"><li>YOLO</li><li>ByteTrack</li><li>HSV</li><li>PaddleOCR</li><li>Computer vision</li></ul>
+                <a class="experience-repo" href="https://github.com/Khalifa-Bouneb/vehicule" target="_blank" rel="noreferrer"><span><small>GitHub repository</small>Explore Vehicle Analytics</span><b>↗</b></a>
+              </article>
+            </div>
+          </div>
+          <span class="timeline-index">01</span>
+        </article>
+        <article class="timeline-item timeline-featured reveal">
+          <div class="time">JUL—AUG 2025</div>
+          <div class="experience-body">
+            <div class="company-header"><img src="DIone/dione.jpg" alt="Dione Protocol logo" width="200" height="200"><div><strong>Dione Protocol</strong><small>Newark, United States · Remote · with Carbon Insights</small></div></div>
+            <div class="hackathon-highlight"><span>AI ODYSSEY HACKATHON</span><strong>3rd place</strong><p>By finishing third, our team earned the opportunity to join Dione Protocol for a two-month internship, where we continued developing the same project we had started during the hackathon.</p></div>
+            <div class="dione-showcase">
+              <figure class="dione-win"><img src="DIone/1748257972219.jpg" alt="Mohamed Mdhaffar and his team receiving third place at the AI Odyssey Hackathon" loading="lazy"><figcaption><span>AI Odyssey Hackathon</span><strong>Third-place team</strong></figcaption></figure>
+              <div class="dione-work" aria-label="TrendWave AI product work">
+                <figure><img src="DIone/image6.png" alt="TrendWave AI cryptocurrency and NFT trends dashboard" loading="lazy"><figcaption>Market dashboard</figcaption></figure>
+                <figure><img src="DIone/h.png" alt="Meme Coin Battle video generated by TrendWave AI" loading="lazy"><figcaption>Meme Coin Battle</figcaption></figure>
+                <figure><img src="DIone/image.png" alt="TrendWave AI X account authentication interface" loading="lazy"><figcaption>Automated X posting</figcaption></figure>
+              </div>
+            </div>
+            <h3>Blockchain & AI Engineering Intern</h3>
+            <p>During the internship, we transformed the hackathon prototype into <strong>TrendWave AI—a token built on top of Dione Coin</strong>. Its purpose was to help crypto traders and project owners promote their tokens, follow market opportunities, attract attention, and pursue earning opportunities through automated content and engagement on X. The platform combines market intelligence, AI-generated promotional media, and direct publishing in one cyberpunk-themed crypto ecosystem.</p>
+            <div class="experience-features">
+              <div><span>01</span><h4>Automated X posting</h4><p>Retrieves real-time trends through Apify, uses an LLM powered by Groq to generate topic-aware posts, and publishes them through the X Developer API.</p></div>
+              <div><span>02</span><h4>Meme Coin Battle</h4><p>Lets users choose two meme coins and a winner, generates a humorous battle video, and publishes the result directly to their X account.</p></div>
+              <div><span>03</span><h4>Crypto dashboard</h4><p>Brings cryptocurrency and NFT data—including market capitalization and 24-hour trends—into one connected analytics experience.</p></div>
+            </div>
+            <ul class="experience-tags"><li>TypeScript</li><li>React</li><li>Tailwind CSS</li><li>Python</li><li>Django REST</li><li>Docker</li><li>MoviePy</li><li>Groq</li><li>Apify</li><li>X API</li><li>Blockchain</li></ul>
+            <div class="experience-repos">
+              <a class="experience-repo" href="https://github.com/MedMdhaffar/Trend-Wave-AI" target="_blank" rel="noreferrer"><span><small>AI Odyssey Hackathon</small>Explore the original TrendWave AI prototype</span><b>↗</b></a>
+              <a class="experience-repo" href="https://github.com/MedMdhaffar/Dione" target="_blank" rel="noreferrer"><span><small>Dione Protocol Internship</small>Explore the continued internship project</span><b>↗</b></a>
+            </div>
+          </div>
+          <span class="timeline-index">02</span>
+        </article>
+        <article class="timeline-item timeline-featured gaia-featured reveal">
+          <div class="time">JUN—AUG 2025</div>
+          <div class="experience-body">
+            <div class="company-header company-header-light"><img src="Gaiathon/cert.png" alt="CERT Tunisia logo" width="542" height="369"><div><strong>CERT</strong><small>Centre for Studies and Research on Telecommunications · Ariana, Tunisia</small></div></div>
+            <div class="gaia-phases">
+              <div><span>PHASE 01 · TUNISIA</span><strong>1st place</strong><p>Winner of the GAIAthon 2025 national phase.</p></div>
+              <i aria-hidden="true">→</i>
+              <div><span>PHASE 02 · AFRICA</span><strong>African champion</strong><p>Winner of the continental final at GAIAfest in Accra.</p></div>
+            </div>
+            <div class="gaia-attribution"><strong>Accra representation</strong><p>Our teammate <b>Zayd Ben Fadhel</b> represented Tunisia and presented CarbonSens at GAIAfest in Accra. I was part of the team that developed the winning project, but I did not personally attend the continental event.</p></div>
+            <div class="gaia-gallery" aria-label="CarbonSens, GAIAthon, and GAIAfest photographs and project work">
+              <figure><img src="Gaiathon/1756427808919.jpg" alt="CarbonSens team after winning the GAIAthon Tunisia phase" loading="lazy"><figcaption>National champions · Tunisia</figcaption></figure>
+              <figure><img src="Gaiathon/1756117948722.jpg" alt="Zayd Ben Fadhel representing Tunisia and receiving the GAIAfest continental award in Accra" loading="lazy"><figcaption>Zayd representing Tunisia · Accra</figcaption></figure>
+              <figure><img src="Gaiathon/1756427822558.jpg" alt="GAIAthon 2025 first-place African championship trophy" loading="lazy"><figcaption>African championship trophy</figcaption></figure>
+              <figure><img src="Gaiathon/1756499049276.jpg" alt="CarbonSens environmental monitoring web platform" loading="lazy"><figcaption>CarbonSens platform</figcaption></figure>
+              <figure><img src="Gaiathon/endnode.jpeg" alt="CarbonSens Arduino and environmental sensor prototype" loading="lazy"><figcaption>IoT sensor node</figcaption></figure>
+              <figure><img src="Gaiathon/iot-architecture.png" alt="CarbonSens LoRaWAN and ChirpStack architecture" loading="lazy"><figcaption>LoRaWAN architecture</figcaption></figure>
+              <figure><img src="Gaiathon/Explanatory_Diagram.jpeg" alt="End-to-end CarbonSens system architecture" loading="lazy"><figcaption>End-to-end architecture</figcaption></figure>
+              <figure><img src="Gaiathon/ihh.png" alt="CarbonSens real-time atmospheric gas dashboard" loading="lazy"><figcaption>EO and IoT dashboard</figcaption></figure>
+              <figure><img src="Gaiathon/CH4_Card.png" alt="CarbonSens live methane monitoring chart" loading="lazy"><figcaption>Live methane insights</figcaption></figure>
+              <figure><img src="Gaiathon/image.png" alt="CarbonSens AI assistant interface" loading="lazy"><figcaption>AI analysis assistant</figcaption></figure>
+              <figure><img src="Gaiathon/j.png" alt="CarbonSens Earth observation and IoT system overview" loading="lazy"><figcaption>EO + IoT data flow</figcaption></figure>
+              <figure><img src="Gaiathon/1756499049288.jpg" alt="GAIAthon participants and CarbonSens team members" loading="lazy"><figcaption>GAIAthon community</figcaption></figure>
+              <figure><img src="Gaiathon/1756499051524.jpg" alt="CarbonSens team members during the competition journey" loading="lazy"><figcaption>The team journey</figcaption></figure>
+            </div>
+            <h3>AI, IoT & Web Development Intern</h3>
+            <p class="company">CarbonSens · Environmental intelligence platform</p>
+            <p>CarbonSens began as our GAIAthon project under the supervision of <strong>Mme Maimouna Ben Said from CERT</strong>. After months of demanding research, integration, testing, and teamwork through both competition phases, we continued developing the project as our summer internship at CERT. This progression reflects the team’s sustained hard work and dedication—from an ambitious hackathon prototype to a complete end-to-end environmental intelligence platform.</p>
+            <p>Built with Zayd Ben Fadhel, Youssef Chatti, and Jawhar Sadok, CarbonSens combines IoT, Earth Observation, AI, and web technologies to help industries and policymakers monitor atmospheric pollutants, anticipate emission trends, and act on environmental data.</p>
+            <div class="experience-features gaia-features">
+              <div><span>01</span><h4>Earth Observation</h4><p>Processes Copernicus Sentinel-5P imagery to monitor CO, NO₂, CH₄, O₃, and SO₂ through interactive visualizations.</p></div>
+              <div><span>02</span><h4>Real-time IoT</h4><p>Collects gases and environmental conditions from field sensors, packages data with CayenneLPP, and transmits it through LoRaWAN, ChirpStack, and MQTT.</p></div>
+              <div><span>03</span><h4>AI intelligence</h4><p>Combines a LangChain and Groq assistant with Random Forest forecasting to predict pollutant levels seven days ahead.</p></div>
+            </div>
+            <ul class="experience-tags"><li>Sentinel-5P</li><li>React</li><li>Vite</li><li>Tailwind CSS</li><li>Django REST</li><li>Arduino C++</li><li>LoRaWAN</li><li>ChirpStack</li><li>MQTT</li><li>Random Forest</li><li>LangChain</li><li>Groq</li><li>Docker</li><li>AWS</li></ul>
+            <a class="experience-repo" href="https://github.com/zaydbf/GAIAthon" target="_blank" rel="noreferrer">Explore the CarbonSens repository <span>↗</span></a>
+          </div>
+          <span class="timeline-index">03</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="about section-pad" id="about">
+      <div class="about-main reveal">
+        <p class="eyebrow">About / Mohamed Mdhaffar</p>
+        <h2>Engineering intelligence<br>for the <em>real world.</em></h2>
+        <p>I’m a final-year ICT engineering student at SUP’COM in Tunis. I care about the whole AI stack: the model, the system around it, and the hardware it ultimately runs on.</p>
+        <p>My current interests include efficient LLM inference, GPU optimization, computer vision, AI-agents and neurosymbolic testing of deep-learning libraries.</p>
+      </div>
+      <div class="education-story reveal">
+        <div class="education-intro"><p class="eyebrow">Education</p><h3>A rigorous foundation,<br>built to go further.</h3></div>
+        <article class="education-card">
+          <div class="education-image"><img src="SUPCOM/SUPCOM.webp" alt="Higher School of Communications of Tunis — SUP’COM campus" width="840" height="488" loading="lazy"></div>
+          <div class="education-copy"><span>2024—2027 · TUNIS</span><h3>ICT Engineering</h3><p>Higher School of Communications of Tunis — SUP’COM</p><small>At SUP’COM, I am developing a broad engineering foundation across telecommunications, computer networks, software systems, data, and artificial intelligence. My studies connect theory with practical implementation through technical projects, teamwork, and the design of intelligent systems that can operate under real-world constraints.</small></div>
+        </article>
+        <article class="education-card education-prep">
+          <div class="education-image education-gallery" aria-label="Mathematics and physics studied at IPEIS">
+            <img src="IPEIS/math.jpg" alt="Infinite sum identity" width="640" height="360" loading="lazy">
+            <img src="IPEIS/maxwell-equation.jpg" alt="Maxwell’s equations" width="345" height="418" loading="lazy">
+            <img src="IPEIS/1000_F_826773368_vSBQffUNURVREQIMvNmVskMcxnspjDb7.jpg" alt="Infinite series and convergence equations" width="480" height="360" loading="lazy">
+            <img src="IPEIS/Periodic-Table-Elements-3460108.webp" alt="Harmonic series graph" loading="lazy">
+          </div>
+          <div class="education-copy"><span>2022—2024 · SFAX</span><h3>Mathematics & Physics Branch</h3><p>Preparatory Institute for Engineering Studies of Sfax</p><small>This demanding two-year program gave me a rigorous scientific foundation in mathematical analysis, linear algebra, statistics, probability, numerical methods, mechanics, electromagnetism, thermodynamics, chemistry, computer science, and engineering fundamentals. The intensive pace strengthened my discipline, analytical thinking, resilience, and ability to perform under pressure.</small><strong>I ranked 74th out of 1,750 candidates (top 5%) in Tunisia’s highly selective national engineering entrance exam, earning admission to SUP’COM.</strong></div>
+        </article>
+      </div>
+      <div class="profile-details reveal">
+        <div class="detail-heading"><p class="eyebrow">Communication</p><h3>Languages</h3></div>
+        <div class="language-cards">
+          <article class="language-card"><span class="language-code" lang="ar">ع</span><div class="language-info"><h4>Arabic</h4><p>Mother tongue</p></div><div class="language-level"><b>Native</b><span class="level-dots" aria-label="Native proficiency"><i></i><i></i><i></i><i></i><i></i></span></div></article>
+          <article class="language-card"><span class="language-code">Fr</span><div class="language-info"><h4>French</h4><p>Fluent communication</p></div><div class="language-level"><b>Bilingual</b><span class="level-dots" aria-label="Bilingual proficiency"><i></i><i></i><i></i><i></i><i></i></span></div></article>
+          <article class="language-card"><span class="language-code">En</span><div class="language-info"><h4>English</h4><p>TOEIC · 765</p></div><div class="language-level"><b>Professional</b><span class="level-dots level-four" aria-label="Professional proficiency"><i></i><i></i><i></i><i></i><i></i></span></div></article>
+        </div>
+
+        <div class="detail-heading volunteering-heading"><p class="eyebrow">Community</p><h3>Volunteering & leadership</h3></div>
+        <div class="volunteer-cards">
+          <article class="volunteer-card">
+            <div class="volunteer-gallery autisens-gallery">
+              <img src="Autisens/1748257919184.jpg" alt="AutiSens team presenting its autism-support platform" loading="lazy">
+              <img src="Autisens/1748257972219.jpg" alt="AutiSens team with the Farah Association" loading="lazy">
+            </div>
+            <div class="volunteer-copy">
+              <div class="volunteer-org volunteer-org-light"><img src="Autisens/logo-association.png" alt="Farah Association for the Integration of Children with Autism and Special Needs logo" width="955" height="647" loading="lazy"><div><strong>Farah Association</strong><small>Integration of children with autism and special needs</small></div></div>
+              <span>TECH FOR GOOD · DEVELOPMENT TEAM</span>
+              <h3>AutiSens</h3>
+              <p class="volunteer-subtitle">A volunteer-driven initiative for autism support</p>
+              <p>Working with the Farah Association for the Integration of Children with Autism and Special Needs, our team built a mobile application that digitizes the PEP-3 psychoeducational assessment used during consultations. The platform helps therapists reduce paperwork, save time, and make evaluations more accessible and efficient for caregivers and families.</p>
+              <p>Beyond development, we created a public street-interview awareness campaign to challenge stigma, share reliable information about autism, and promote inclusion.</p>
+              <ul class="volunteer-tags"><li>Flutter</li><li>Firebase</li><li>UX/UI</li><li>Social impact</li></ul>
+              <small>Built with Iyed Rachdi, Tasnim Selmi, Malek Ben Jomaa, and Mohamed Aziz Saoudi.</small>
+            </div>
+          </article>
+
+          <article class="volunteer-card">
+            <div class="volunteer-gallery grss-gallery">
+              <img src="GRSS/1789125487794.jpg" alt="IEEE student branch collaboration event" loading="lazy">
+              <img src="GRSS/1789125487811.jpg" alt="Students collaborating during an IEEE activity" loading="lazy">
+              <img src="GRSS/1789125488004.jpg" alt="IEEE student members gathered for a group activity" loading="lazy">
+              <img src="GRSS/514268582_1568617871108605_8029300576319162267_n.jpg" alt="SUP’COM IEEE GRSS student branch team" loading="lazy">
+              <img src="GRSS/571274954_1603648524272206_1648260298460771430_n.jpg" alt="IEEE GRSS workshop activity" loading="lazy">
+              <img src="GRSS/612895236_1663608488276209_7831186678754713122_n.jpg" alt="IEEE GRSS community event" loading="lazy">
+              <img src="GRSS/615162977_1663608668276191_3396723241432380564_n.jpg" alt="IEEE GRSS technical workshop at SUP’COM" loading="lazy">
+            </div>
+            <div class="volunteer-copy">
+              <div class="volunteer-org"><img src="GRSS/ieee logo.jpg" alt="SUP’COM IEEE Student Branch logo" width="447" height="447" loading="lazy"><div><strong>SUP’COM IEEE Student Branch</strong><small>IEEE GRSS AESS JOINT Chapter</small></div></div>
+              <span>IEEE GRSS · HR MANAGER & INSTRUCTOR</span>
+              <h3>Leadership through community</h3>
+              <p class="volunteer-subtitle">IEEE GRSS AESS JOINT Chapter - Sup'Com Student Branch</p>
+              <p>As HR Manager, I supported member engagement, team coordination, onboarding, and a collaborative culture across the student branch. The role strengthened my leadership, communication, organization, and ability to help multidisciplinary teams work effectively together.</p>
+              <p>I also designed and delivered a technical workshop on deep learning for supernova detection, translating complex AI concepts into an accessible hands-on learning experience for students.</p>
+              <ul class="volunteer-tags"><li>Leadership</li><li>Team coordination</li><li>Deep learning</li><li>Technical instruction</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills section-pad" id="skills">
+      <div class="section-heading reveal"><p class="eyebrow">Technologies & Skills</p><h2>My technical<br>constellation.</h2></div>
+      <div class="skill-clusters reveal">
+        <article class="skill-cluster"><div class="cluster-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-3 3 3 3m8-6 3 3-3 3m-2-9-4 12"/></svg><h3>Programming Languages</h3></div><div class="tech-nodes">
+          <div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="" loading="lazy"><span>Python</span></div>
+          <div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="" loading="lazy"><span>C</span></div>
+          <div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="" loading="lazy"><span>C++</span></div>
+          <div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="" loading="lazy"><span>JavaScript</span></div>
+          <div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg" alt="" loading="lazy"><span>MATLAB</span></div>
+        </div></article>
+        <article class="skill-cluster"><div class="cluster-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4.5a2.5 2.5 0 0 1 5 0v.7a3 3 0 0 1 3.8 3.7A3 3 0 0 1 19 14.5a3 3 0 0 1-4.8 3.8A2.6 2.6 0 0 1 9 18V6m0 2H7.5A2.5 2.5 0 0 0 5 10.5c0 .7.3 1.4.8 1.9A3 3 0 0 0 7 18h2m5-9h-2m2 5h-2"/></svg><h3>AI & Machine Learning</h3></div><div class="tech-nodes">
+          <div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" alt="" loading="lazy"><span>PyTorch</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" alt="" loading="lazy"><span>TensorFlow</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" alt="" loading="lazy"><span>scikit-learn</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" alt="" loading="lazy"><span>pandas</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg" alt="" loading="lazy"><span>OpenCV</span></div>
+        </div></article>
+        <article class="skill-cluster"><div class="cluster-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13 2-8 12h7l-1 8 8-12h-7z"/></svg><h3>GPU & Edge AI</h3></div><div class="tech-nodes">
+          <div class="tech-node tech-node-logo-wide"><img src="cuda/1_Z_vXwV0SPudOAdlZnoAkWA.png" alt="CUDA" loading="lazy"><span>CUDA C++</span></div><div class="tech-node tech-node-logo-wide"><img src="triton/profile-transparent.png" alt="Triton" loading="lazy"><span>Triton</span></div><div class="tech-node tech-node-logo-wide"><img src="numba/1_Tw8MQ71QHdMOqFMbTJAwlQ.jpg" alt="Numba" loading="lazy"><span>Numba</span></div>
+        </div></article>
+        <article class="skill-cluster"><div class="cluster-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3z"/></svg><h3>Software, Backend & Cloud</h3></div><div class="tech-nodes">
+          <div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="" loading="lazy"><span>HTML</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="" loading="lazy"><span>CSS</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" alt="" loading="lazy"><span>Django</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="" loading="lazy"><span>React</span></div><div class="tech-node tech-node-logo-wide"><img src="qdrant/images.jpg" alt="Qdrant" loading="lazy"><span>Qdrant</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="" loading="lazy"><span>Git</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="" loading="lazy"><span>GitHub</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="" loading="lazy"><span>Docker</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="" loading="lazy"><span>AWS EC2</span></div><div class="tech-node tech-node-logo-wide"><img src="langchain/images.jpg" alt="LangChain" loading="lazy"><span>LangChain</span></div><div class="tech-node tech-node-logo-wide"><img src="langgraph/0_loI9Xd2y7_ctpvRS.png" alt="LangGraph" loading="lazy"><span>LangGraph</span></div><div class="tech-node tech-node-logo-wide"><img src="mcp/fzfz.jpg" alt="Model Context Protocol" loading="lazy"><span>MCP</span></div><div class="tech-node tech-node-logo-wide"><img src="langsmith/images (1).jpg" alt="LangSmith" loading="lazy"><span>LangSmith</span></div>
+        </div></article>
+        <article class="skill-cluster"><div class="cluster-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 16a5 5 0 0 1 7 0M6 13a8.5 8.5 0 0 1 12 0M3.5 10a12 12 0 0 1 17 0M12 19h.01"/></svg><h3>IoT & Embedded</h3></div><div class="tech-nodes">
+          <div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg" alt="" loading="lazy"><span>Arduino</span></div><div class="tech-node"><b>STM</b><span>STM32</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/embeddedc/embeddedc-original.svg" alt="" loading="lazy"><span>ESP32</span></div><div class="tech-node"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original.svg" alt="" loading="lazy"><span>Raspberry Pi 4</span></div>
+        </div></article>
+      </div>
+    </section>
+
+    <section class="courses section-pad" id="courses">
+      <div class="section-heading reveal"><p class="eyebrow">Stanford course-based learning</p><h2>Theory studied.<br>Ideas implemented.</h2></div>
+      <p class="courses-intro reveal">Self-directed study using Stanford’s publicly available course materials, complemented by practical GPU programming work. Each course strengthens a different layer of my AI and high-performance computing foundation.</p>
+      <div class="course-grid reveal">
+        <a class="course-card" href="https://cs229.stanford.edu/" target="_blank" rel="noreferrer"><div class="course-mark">S</div><div class="course-code">CS229 · STANFORD</div><h3>Machine Learning</h3><p>Supervised and unsupervised learning, linear and logistic regression, generalized linear models, SVMs and kernels, neural networks, clustering, dimensionality reduction, learning theory, reinforcement learning, and practical model evaluation.</p><ul><li>Statistical learning</li><li>Optimization</li><li>RL & control</li></ul><span>Official course ↗</span></a>
+        <a class="course-card" href="https://cs230.stanford.edu/" target="_blank" rel="noreferrer"><div class="course-mark">S</div><div class="course-code">CS230 · STANFORD</div><h3>Deep Learning</h3><p>Neural-network foundations, initialization, regularization, optimization, error analysis, convolutional architectures, sequence models, deep-learning project strategy, and the practical process of building reliable learning systems.</p><ul><li>Neural networks</li><li>Optimization</li><li>ML strategy</li></ul><span>Official course ↗</span></a>
+        <a class="course-card" href="https://cs231n.stanford.edu/" target="_blank" rel="noreferrer"><div class="course-mark">S</div><div class="course-code">CS231N · STANFORD</div><h3>Deep Learning for Computer Vision</h3><p>Image classification, backpropagation, convolutional networks, training and fine-tuning, detection, segmentation, visual recognition architectures, generative approaches, and practical engineering for real-world vision systems.</p><ul><li>CNNs</li><li>Detection</li><li>Visual recognition</li></ul><span>Official course ↗</span></a>
+        <a class="course-card" href="https://cme295.stanford.edu/" target="_blank" rel="noreferrer"><div class="course-mark">S</div><div class="course-code">CME295 · STANFORD</div><h3>Transformers & Large Language Models</h3><p>Tokenization, embeddings, attention, Transformer architecture, positional encoding, BERT-style models, mixture of experts, prompting, sampling, context handling, LLM training, evaluation, and efficient adaptation techniques.</p><ul><li>Attention</li><li>LLM training</li><li>Inference</li></ul><span>Official course ↗</span></a>
+        <a class="course-card" href="https://deepgenerativemodels.github.io/" target="_blank" rel="noreferrer"><div class="course-mark">S</div><div class="course-code">CS236 · STANFORD</div><h3>Deep Generative Models</h3><p>Probabilistic foundations of generative learning, autoregressive models, variational autoencoders, normalizing flows, generative adversarial networks, energy-based models, diffusion models, evaluation, and representation learning.</p><ul><li>VAEs</li><li>GANs</li><li>Diffusion</li></ul><span>Course materials ↗</span></a>
+        <a class="course-card" href="https://gfxcourses.stanford.edu/cs149/fall25" target="_blank" rel="noreferrer"><div class="course-mark">S</div><div class="course-code">CS149 · STANFORD</div><h3>Parallel Computing</h3><p>Multicore processors, SIMD execution, GPU programming, memory locality, synchronization, scheduling, parallel programming abstractions, performance analysis, and designing scalable implementations for modern hardware.</p><ul><li>SIMD</li><li>GPU systems</li><li>Performance</li></ul><span>Official course ↗</span></a>
+        <a class="course-card" href="https://web.stanford.edu/class/ee367/" target="_blank" rel="noreferrer"><div class="course-mark">S</div><div class="course-code">EE367 / CS448I · STANFORD</div><h3>Computational Imaging</h3><p>Digital photography, image signal processing, denoising, deconvolution, inverse problems, proximal optimization, CNN-based imaging, wave optics, time-of-flight sensing, and joint optimization of optics and algorithms.</p><ul><li>Inverse problems</li><li>Image processing</li><li>Computational optics</li></ul><span>Official course ↗</span></a>
+        <article class="course-card course-card-gpu"><div class="course-mark"><img src="cuda mode/images.jpg" alt="GPU Mode" loading="lazy"></div><div class="course-code">ADDITIONAL PRACTICAL TRAINING</div><h3>GPU Mode · CUDA</h3><p>Hands-on GPU programming focused on CUDA kernels, memory hierarchy, profiling, performance bottlenecks, parallel primitives, kernel fusion, and systematic optimization of machine-learning workloads.</p><ul><li>CUDA kernels</li><li>Profiling</li><li>Optimization</li></ul><div class="gpu-reading"><img src="paralleloptimization/image.png" alt="Cover of Programming Massively Parallel Processors: A Hands-on Approach by David B. Kirk and Wen-mei W. Hwu" loading="lazy" width="715" height="897"><div><small>Currently reading</small><strong>Programming Massively Parallel Processors</strong><span>David B. Kirk &amp; Wen-mei W. Hwu</span></div></div><span>Independent practical work</span></article>
+      </div>
+    </section>
+
+    <section class="contact section-pad reveal" id="contact">
+      <p class="eyebrow">Have a challenge worth solving?</p>
+      <h2>Let’s build something<br><em>that matters.</em></h2>
+      <a href="mailto:mohamed.mdhaffar@supcom.tn">mohamed.mdhaffar@supcom.tn <span>↗</span></a>
+      <div class="contact-meta"><span>Based in Tunis · Open to relocation</span><div><a href="https://www.linkedin.com/in/mohamed-mdhafar/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/MedMdhaffar" target="_blank" rel="noreferrer">GitHub ↗</a></div></div>
+    </section>
+  </main>
+
+  <footer><span>© <span id="year"></span> Mohamed Mdhaffar</span><a href="#top">Back to top ↑</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
